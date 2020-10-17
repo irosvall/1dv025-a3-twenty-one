@@ -31,9 +31,11 @@ export class Game {
   }
 
   set nrOfPlayers (nrOfPlayers) {
-    if (Number.isNaN(nrOfPlayers)) {
+    if (nrOfPlayers === 0) {
       this._nrOfPlayers = 3
-    } else if (!Number.isInteger(nrOfPlayers) || nrOfPlayers < 1 || nrOfPlayers > 50) {
+    } else if (nrOfPlayers === 20 || nrOfPlayers === 50) {
+      this._nrOfPlayers = nrOfPlayers
+    } else if (!Number.isInteger(nrOfPlayers) || nrOfPlayers < 1 || nrOfPlayers > 7) {
       throw new TypeError('Invalid number of players')
     } else {
       this._nrOfPlayers = nrOfPlayers
