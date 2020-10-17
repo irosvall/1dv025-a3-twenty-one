@@ -10,6 +10,7 @@
 // TODO: Replace the code below with your own game logic.
 
 import { Deck } from './Deck.js'
+import { Game } from './Game.js'
 
 try {
   // Create 52 playing cards and...
@@ -26,10 +27,12 @@ try {
   //  the primitive value of the current PlayingCard object.)
   const hand = playingCards.splice(0, 3)
 
-  console.log(playingCards.join(', '))
+  console.log(playingCards.join(', '), '\n')
 
   const value = hand.reduce((value, playingCard) => value + playingCard, 0)
   console.log(`${hand.join(' ')} (${value})`)
+
+  Game.run()
 } catch (e) {
   console.error(e.message)
 }
