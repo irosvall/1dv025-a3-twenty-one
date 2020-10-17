@@ -32,7 +32,14 @@ try {
   const value = hand.reduce((value, playingCard) => value + playingCard, 0)
   console.log(`${hand.join(' ')} (${value})`)
 
-  Game.run()
+  const array = ['2', '4', '-3']
+  console.log(Number(array.splice(2)))
+  console.log(process.argv)
+
+  const numberOfPlayers = Number(process.argv[2])
+
+  const game = new Game(numberOfPlayers)
+  game.run()
 } catch (e) {
   console.error(e.message)
 }

@@ -10,13 +10,18 @@ import { Ranks } from './Ranks.js'
 import { Suits } from './Suits.js'
 
 /**
- * Creates a new PlayingCard object.
+ * Represents playingcards.
  *
- * @param {Ranks} rank - The playing card's rank.
- * @param {Suits} suit - The playing card's suit.
- * @class
+ * @class PlayingCard
  */
 export class PlayingCard {
+  /**
+   * Creates an instance of PlayingCard.
+   *
+   * @param {Ranks} rank - The playing card's rank.
+   * @param {Suits} suit - The playing card's suit.
+   * @class
+   */
   constructor (rank, suit) {
     /**
      * The playing card's rank.
