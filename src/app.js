@@ -38,8 +38,7 @@ try {
 
   const numberOfPlayers = Number(process.argv.splice(2))
 
-  const game = new Game(numberOfPlayers)
-  game.run()
+  Game.run(numberOfPlayers)
 } catch (e) {
   console.error(e.message)
 }
