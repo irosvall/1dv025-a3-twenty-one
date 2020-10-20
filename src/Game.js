@@ -6,6 +6,7 @@
  */
 
 import { Players } from './Players.js'
+import { Deck } from './Deck.js'
 
 /**
  * Represents the card game 21.
@@ -20,8 +21,9 @@ export class Game {
    * @returns {string} A string that represents the outcome of the game.
    */
   static run (nrOfPlayers) {
-    const players = new Players(nrOfPlayers)
+    const players = new Players(nrOfPlayers).nrOfPlayers
+    const deck = Deck.create()
 
-    return console.log('Running' + players.nrOfPlayers)
+    return console.log('Running' + players)
   }
 }

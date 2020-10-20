@@ -11,6 +11,7 @@
 
 import { Deck } from './Deck.js'
 import { Game } from './Game.js'
+import { DrawPile } from './DrawPile.js'
 
 try {
   // Create 52 playing cards and...
@@ -31,10 +32,6 @@ try {
 
   const value = hand.reduce((value, playingCard) => value + playingCard, 0)
   console.log(`${hand.join(' ')} (${value})`)
-
-  const array = ['2', '4', '3', '5', '5']
-  console.log(Number(array.splice(2)))
-  console.log(process.argv)
 
   const numberOfPlayers = Number(process.argv.splice(2))
 
