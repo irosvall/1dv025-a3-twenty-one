@@ -1,7 +1,6 @@
 /**
  * Module for Ranks.
  *
- * @module src/Ranks
  * @author Johan Leitet <johan.leitet@lnu.se>
  * @author Mats Loock <mats.loock@lnu.se>
  * @version 1.0.0

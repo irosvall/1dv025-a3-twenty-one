@@ -35,8 +35,9 @@ try {
   console.log(`${hand.join(' ')} (${value})`)
 
   const numberOfPlayers = Number(process.argv.splice(2))
+  const game = new Game(numberOfPlayers)
 
-  Game.run(numberOfPlayers)
+  game.run(numberOfPlayers)
 } catch (e) {
   console.error(e.message)
 }
