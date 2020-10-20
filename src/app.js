@@ -29,6 +29,7 @@ try {
   const hand = playingCards.splice(0, 3)
 
   console.log(playingCards.join(', '), '\n')
+  console.log(hand)
 
   const value = hand.reduce((value, playingCard) => value + playingCard, 0)
   console.log(`${hand.join(' ')} (${value})`)

@@ -7,6 +7,7 @@
 
 import { Deck } from './Deck.js'
 import { PlayingCard } from './PlayingCard.js'
+import { DiscardPile } from './DiscardPile.js'
 
 /**
  * Represents a card drawpile.
@@ -17,7 +18,7 @@ export class DrawPile {
   /**
    * Refills the draw pile and shuffle it.
    *
-   * @param {PlayingCard[]} deck - An array of playingcard objects.
+   * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
    * @param {PlayingCard[]} playingcards - An array of playingcard objects.
    */
   static refillCards (deck, playingcards) {
@@ -28,12 +29,13 @@ export class DrawPile {
   /**
    * Returns a card from the draw pile.
    *
-   * @param {PlayingCard[]} deck - An array of playingcard objects.
+   * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
+   * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
    * @returns {PlayingCard[]} An array with one object of playingcard.
    */
-  static takeCard (deck) {
+  static takeCard (deck, discardDeck) {
     if (deck.length === 1) {
-      this.refillCards(deck, )
+      this.refillCards(deck, DiscardPile.takeAllCards(discardDeck))
     }
     return deck.splice(0, 1)
   }

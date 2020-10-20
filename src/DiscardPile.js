@@ -5,7 +5,6 @@
  * @version 1.0.0
  */
 
-import { Deck } from './Deck.js'
 import { PlayingCard } from './PlayingCard.js'
 
 /**
@@ -14,5 +13,23 @@ import { PlayingCard } from './PlayingCard.js'
  * @class
  */
 export class DiscardPile {
+  /**
+   * Throws cards in the discard pile.
+   *
+   * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
+   * @param {PlayingCard[]} playingcards - An array of playingcard objects.
+   */
+  static throwCards (discardDeck, playingcards) {
+    discardDeck.push(playingcards)
+  }
 
+  /**
+   * Return all cards from the discard pile.
+   *
+   * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
+   * @returns {PlayingCard[]} An array of playingcard objects.
+   */
+  static takeAllCards (discardDeck) {
+    return discardDeck.splice(0, discardDeck.length)
+  }
 }

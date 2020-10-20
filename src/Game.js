@@ -7,6 +7,7 @@
 
 import { Players } from './Players.js'
 import { Deck } from './Deck.js'
+import { DrawPile } from './DrawPile.js'
 
 /**
  * Represents the card game 21.
@@ -23,6 +24,19 @@ export class Game {
   static run (nrOfPlayers) {
     const players = new Players(nrOfPlayers).nrOfPlayers
     const deck = Deck.create()
+    const discardDeck = []
+
+    Deck.shuffle(deck)
+
+    const hand = []
+
+    for (let i = 0; i < deck.length - 2; i++) {
+      hand.push(DrawPile.takeCard(deck, discardDeck))
+    }
+
+    console.log(deck)
+    console.log(hand)
+    console.log(discardDeck)
 
     return console.log('Running' + players)
   }
