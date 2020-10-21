@@ -7,7 +7,7 @@
 
 import { Deck } from './Deck.js'
 import { DiscardPile } from './DiscardPile.js'
-import { DrawPile } from './DrawPile.js'
+import { Player } from './Player.js'
 
 /**
  * Represents the card game 21.
@@ -59,7 +59,7 @@ export class Game {
     const hand = []
 
     for (let i = 0; i < deck.length - 2; i++) {
-      hand.push(DrawPile.takeCard(deck, discardDeck))
+      hand.push(Player.takeCard(deck, discardDeck))
     }
 
     console.log(deck)

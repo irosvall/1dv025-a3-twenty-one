@@ -56,4 +56,15 @@ export class Deck {
 
     return playingCards
   }
+
+  /**
+   * Refills the draw pile and shuffle it.
+   *
+   * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
+   * @param {PlayingCard[]} playingcards - An array of playingcard objects.
+   */
+  static refillDeck (deck, playingcards) {
+    deck.push(playingcards)
+    Deck.shuffle(playingcards)
+  }
 }
