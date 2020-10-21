@@ -31,12 +31,12 @@ export class DrawPile {
    *
    * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
-   * @returns {PlayingCard[]} An array with one object of playingcard.
+   * @returns {PlayingCard} One object of playingcard.
    */
   static takeCard (deck, discardDeck) {
     if (deck.length === 1) {
       this.refillCards(deck, DiscardPile.takeAllCards(discardDeck))
     }
-    return deck.splice(0, 1)
+    return deck.splice(0, 1)[0]
   }
 }

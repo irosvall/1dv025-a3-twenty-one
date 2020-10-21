@@ -6,6 +6,7 @@
  */
 
 import { Deck } from './Deck.js'
+import { DiscardPile } from './DiscardPile.js'
 import { DrawPile } from './DrawPile.js'
 
 /**
@@ -62,6 +63,13 @@ export class Game {
     }
 
     console.log(deck)
+    console.log(hand)
+    console.log(discardDeck)
+
+    DiscardPile.throwCards(discardDeck, hand)
+
+    console.log('after thrown cards')
+
     console.log(hand)
     console.log(discardDeck)
 

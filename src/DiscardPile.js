@@ -20,7 +20,7 @@ export class DiscardPile {
    * @param {PlayingCard[]} playingcards - An array of playingcard objects.
    */
   static throwCards (discardDeck, playingcards) {
-    discardDeck.push(playingcards)
+    discardDeck.push(playingcards.splice(0, playingcards.length))
   }
 
   /**
