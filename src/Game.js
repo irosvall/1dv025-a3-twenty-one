@@ -27,6 +27,9 @@ export class Game {
      * @type {number}
      */
     this.nrOfPlayers = nrOfPlayers
+    this.deck = Deck.create()
+    this.discardDeck = []
+    this.players = []
   }
 
   get nrOfPlayers () {
@@ -51,27 +54,26 @@ export class Game {
    * @returns {string} A string that represents the outcome of the game.
    */
   run () {
-    const deck = Deck.create()
-    const discardDeck = []
-
-    Deck.shuffle(deck)
+    Deck.shuffle(this.deck)
 
     const hand = []
 
-    for (let i = 0; i < deck.length - 2; i++) {
-      hand.push(Player.takeCard(deck, discardDeck))
+    const player = new Player()
+
+    for (let i = 0; i < this.deck.length - 2; i++) {
+      hand.push(player.takeCard(this.deck, this.discardDeck))
     }
 
-    console.log(deck)
+    console.log(this.deck)
     console.log(hand)
-    console.log(discardDeck)
+    console.log(this.discardDeck)
 
-    DiscardPile.throwCards(discardDeck, hand)
+    DiscardPile.throwCards(this.discardDeck, hand)
 
     console.log('after thrown cards')
 
     console.log(hand)
-    console.log(discardDeck)
+    console.log(this.discardDeck)
 
     return console.log('Running' + this.nrOfPlayers)
   }

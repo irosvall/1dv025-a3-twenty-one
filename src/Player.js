@@ -31,6 +31,7 @@ export class Player {
     if (playingcard.valueOf() === 1) {
 
     }
+    return playingcard
   }
 
   handValue () {
