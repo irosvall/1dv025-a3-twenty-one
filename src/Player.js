@@ -24,7 +24,7 @@ export class Player {
    */
   takeCard (deck, discardDeck) {
     if (deck.length === 1) {
-      Deck.refillDeck(deck, DiscardPile.takeAllCards(discardDeck))
+      DiscardPile.refillDeck(deck, discardDeck)
     }
     const playingcard = deck.splice(0, 1)[0]
 

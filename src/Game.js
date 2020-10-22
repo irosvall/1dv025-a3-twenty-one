@@ -72,6 +72,14 @@ export class Game {
 
     console.log('after thrown cards')
 
+    console.log(this.deck)
+    console.log(hand)
+    console.log(this.discardDeck)
+
+    DiscardPile.refillDeck(this.deck, this.discardDeck)
+
+    console.log('after refilling deck')
+    console.log(this.deck)
     console.log(hand)
     console.log(this.discardDeck)
 

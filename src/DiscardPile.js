@@ -6,6 +6,7 @@
  */
 
 import { PlayingCard } from './PlayingCard.js'
+import { Deck } from './Deck.js'
 
 /**
  * Represents a card discardpile.
@@ -17,19 +18,31 @@ export class DiscardPile {
    * Throws cards in the discard pile.
    *
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
-   * @param {PlayingCard[]} playingcards - An array of playingcard objects.
+   * @param {PlayingCard[]} playingcards - An array of playingcard objects representing a players hand.
    */
   static throwCards (discardDeck, playingcards) {
-    discardDeck.push(playingcards.splice(0, playingcards.length))
+    for (const playingcard of playingcards) {
+      discardDeck.push(playingcard)
+    }
+
+    // Empty the player's hand.
+    playingcards.splice(0, playingcards.length)
   }
 
   /**
-   * Return all cards from the discard pile.
+   * Refills the deck from the discard pile and shuffle it.
    *
+   * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
-   * @returns {PlayingCard[]} An array of playingcard objects.
    */
-  static takeAllCards (discardDeck) {
-    return discardDeck.splice(0, discardDeck.length)
+  static refillDeck (deck, discardDeck) {
+    for (const playingcard of discardDeck) {
+      deck.push(playingcard)
+    }
+
+    // Empty the discard pile.
+    discardDeck.splice(0, discardDeck.length)
+
+    Deck.shuffle(deck)
   }
 }
