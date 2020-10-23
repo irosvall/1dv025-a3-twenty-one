@@ -68,7 +68,7 @@ export class Game {
   set nrOfPlayers (nrOfPlayers) {
     if (nrOfPlayers === 0) {
       this._nrOfPlayers = 3
-    } else if (nrOfPlayers === 20 || nrOfPlayers === 50) {
+    } else if (nrOfPlayers === 20 || nrOfPlayers === 55) {
       this._nrOfPlayers = nrOfPlayers
     } else if (!Number.isInteger(nrOfPlayers) || nrOfPlayers < 1 || nrOfPlayers > 7) {
       throw new TypeError('Invalid number of players')
@@ -85,40 +85,26 @@ export class Game {
   run () {
     Deck.shuffle(this.deck)
 
-    const hand = []
-
-    const player = new Player()
-
-    for (let i = 0; i < this.deck.length - 2; i++) {
-      hand.push(player.takeCard(this.deck, this.discardDeck))
-    }
-
-    console.log(this.deck)
-    console.log(hand)
-    console.log(this.discardDeck)
-
-    DiscardPile.throwCards(this.discardDeck, hand)
-
-    console.log('after thrown cards')
-
-    console.log(this.deck)
-    console.log(hand)
-    console.log(this.discardDeck)
-
-    DiscardPile.refillDeck(this.deck, this.discardDeck)
-
-    console.log('after refilling deck')
-    console.log(this.deck)
-    console.log(hand)
-    console.log(this.discardDeck)
-
     this.makePlayers()
+    this.playersTakeCard()
     return console.log('Running' + this.nrOfPlayers)
   }
 
+  /**
+   * Creates as many player objects as number of players and push them to players array.
+   */
   makePlayers () {
     for (let i = 1; i <= this.nrOfPlayers; i++) {
       this.players.push(new Player(i))
+    }
+  }
+
+  /**
+   * Every player takes one card.
+   */
+  playersTakeCard () {
+    for (const player of this.players) {
+      player.takeCard(this.deck, this.discardDeck)
     }
   }
 }

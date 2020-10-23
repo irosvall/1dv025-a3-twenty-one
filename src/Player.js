@@ -46,7 +46,11 @@ export class Player {
      *
      * @type {number}
      */
-    this.handValue = 0
+    this._handValue = 0
+  }
+
+  get handValue () {
+    return this._handValue
   }
 
   /**
@@ -54,21 +58,24 @@ export class Player {
    *
    * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
-   * @returns {PlayingCard} One object of playingcard.
    */
   takeCard (deck, discardDeck) {
+    if (deck.length === 0) {
+      throw new TypeError('No more cards in the draw pile')
+    }
     if (deck.length === 1) {
       DiscardPile.refillDeck(deck, discardDeck)
     }
-    const playingcard = deck.splice(0, 1)[0]
-
-    if (playingcard.valueOf() === 1) {
-
+    if (this._handValue === 0) {
+      this.hand.push(deck.splice(0, 1)[0])
+      this.sumCards()
     }
-    return playingcard
   }
 
+  /**
+   * Sums the player's playingcards values.
+   */
   sumCards () {
-
+    this._handValue = this.hand.reduce((value, playingCard) => value + playingCard, 0)
   }
 }
