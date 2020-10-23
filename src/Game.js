@@ -112,6 +112,13 @@ export class Game {
     console.log(hand)
     console.log(this.discardDeck)
 
+    this.makePlayers()
     return console.log('Running' + this.nrOfPlayers)
+  }
+
+  makePlayers () {
+    for (let i = 1; i <= this.nrOfPlayers; i++) {
+      this.players.push(new Player(i))
+    }
   }
 }
