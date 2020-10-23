@@ -8,6 +8,7 @@
 import { Deck } from './Deck.js'
 import { DiscardPile } from './DiscardPile.js'
 import { Player } from './Player.js'
+import { PlayingCard } from './PlayingCard.js'
 
 /**
  * Represents the card game 21.
@@ -27,15 +28,43 @@ export class Game {
      * @type {number}
      */
     this.nrOfPlayers = nrOfPlayers
+
+    /**
+     * The deck/drawpile in the game.
+     *
+     * @type {PlayingCard[]} An array of PlayingCard objects.
+     */
     this.deck = Deck.create()
+
+    /**
+     * The discard deck/pile in the game.
+     *
+     * @type {PlayingCard[]} An array of PlayingCard objects.
+     */
     this.discardDeck = []
+
+    /**
+     * The players in the game.
+     *
+     * @type {Player[]} An array of Player objects.
+     */
     this.players = []
   }
 
+  /**
+   * Get the number of players.
+   *
+   * @returns {number} The number of players.
+   */
   get nrOfPlayers () {
     return this._nrOfPlayers
   }
 
+  /**
+   * Set the number of players.
+   *
+   * @param {number} nrOfPlayers - The number of players.
+   */
   set nrOfPlayers (nrOfPlayers) {
     if (nrOfPlayers === 0) {
       this._nrOfPlayers = 3
