@@ -32,7 +32,7 @@ export class Player {
      *
      * @type {number}
      */
-    this.stopValue = Math.floor(Math.random * 2) + 16
+    this.stopValue = Math.floor(Math.random() * 3) + 16
 
     /**
      * The playingcard objects on the player's hand.
