@@ -5,7 +5,6 @@
  * @version 1.0.0
  */
 
-import { Deck } from './Deck.js'
 import { PlayingCard } from './PlayingCard.js'
 import { DiscardPile } from './DiscardPile.js'
 
@@ -15,6 +14,41 @@ import { DiscardPile } from './DiscardPile.js'
  * @class
  */
 export class Player {
+  /**
+   * Creates an instance of a player.
+   *
+   * @param {number} playerIndex - The number of a player.
+   */
+  constructor (playerIndex) {
+    /**
+     * A player's name.
+     *
+     * @type {string}
+     */
+    this.playerName = `Player #${playerIndex}`
+
+    /**
+     * A player's randomized stop value from 16 to 18.
+     *
+     * @type {number}
+     */
+    this.stopValue = Math.floor(Math.random * 2) + 16
+
+    /**
+     * The playingcard objects on the player's hand.
+     *
+     * @type {PlayingCard[]} An array of playingcard objects.
+     */
+    this.hand = []
+
+    /**
+     * The summed value of the player's cards.
+     *
+     * @type {number}
+     */
+    this.handValue = 0
+  }
+
   /**
    * Returns a card from the playing deck.
    *
@@ -34,7 +68,7 @@ export class Player {
     return playingcard
   }
 
-  handValue () {
-      
+  sumCards () {
+
   }
 }
