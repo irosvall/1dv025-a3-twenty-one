@@ -15,7 +15,7 @@ import { Deck } from './Deck.js'
  */
 export class DiscardPile {
   /**
-   * Throws cards in the discard pile.
+   * Throws cards to the discard pile.
    *
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
    * @param {PlayingCard[]} playingcards - An array of playingcard objects representing a players hand.

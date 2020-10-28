@@ -91,6 +91,10 @@ export class Game {
     this.playPlayers()
   }
 
+  /**
+   * Play each player against the dealer.
+   *
+   */
   playPlayers () {
     for (const player of this.players) {
       player.takeSeveralCards(this.deck, this.discardDeck)
@@ -135,15 +139,6 @@ export class Game {
   playersTakeOneCard () {
     for (const player of this.players) {
       player.takeCard(this.deck, this.discardDeck)
-    }
-  }
-
-  /**
-   * Every player takes cards till reaches ur surpass its stop value.
-   */
-  playerTakeCards () {
-    for (const player of this.players) {
-      player.takeSeveralCards(this.deck, this.discardDeck)
     }
   }
 }

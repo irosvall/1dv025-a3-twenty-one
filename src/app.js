@@ -7,32 +7,9 @@
  * @version 1.0.0
  */
 
-// TODO: Replace the code below with your own game logic.
-
-import { Deck } from './Deck.js'
 import { Game } from './Game.js'
 
 try {
-  // Create 52 playing cards and...
-  const playingCards = Deck.create()
-  console.log(playingCards.join(', '), '\n')
-
-  // ...shuffle them.
-  Deck.shuffle(playingCards)
-  console.log(playingCards.join(', '), '\n')
-
-  // Draw three playing cards, view the remaining playing cards, the drawn playing cards and
-  // then calculate the value of them.
-  // (`value + playingCard` implicitly calls PlayingCard#valueOf to get
-  //  the primitive value of the current PlayingCard object.)
-  const hand = playingCards.splice(0, 3)
-
-  console.log(playingCards.join(', '), '\n')
-  console.log(hand)
-
-  const value = hand.reduce((value, playingCard) => value + playingCard, 0)
-  console.log(`${hand.join(' ')} (${value})`)
-
   const numberOfPlayers = Number(process.argv.splice(2))
   const game = new Game(numberOfPlayers)
 
