@@ -49,12 +49,17 @@ export class Player {
     this._handValue = 0
   }
 
+  /**
+   * Get a player's hand value.
+   *
+   * @returns {number} The hand value.
+   */
   get handValue () {
     return this._handValue
   }
 
   /**
-   * Returns a card from the playing deck.
+   * Player gets a card from the playing deck.
    *
    * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
@@ -66,9 +71,20 @@ export class Player {
     if (deck.length === 1) {
       DiscardPile.refillDeck(deck, discardDeck)
     }
-    if (this._handValue === 0) {
-      this.hand.push(deck.splice(0, 1)[0])
-      this.sumCards()
+
+    this.hand.push(deck.splice(0, 1)[0])
+    this.sumCards()
+  }
+
+  /**
+   * If the hand value is above 0 take cards till reach the stop value.
+   *
+   * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
+   * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
+   */
+  takeSeveralCards (deck, discardDeck) {
+    while (this._handValue < this.stopValue) {
+      this.takeCard(deck, discardDeck)
     }
   }
 

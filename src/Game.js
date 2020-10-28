@@ -68,7 +68,7 @@ export class Game {
   set nrOfPlayers (nrOfPlayers) {
     if (nrOfPlayers === 0) {
       this._nrOfPlayers = 3
-    } else if (nrOfPlayers === 20 || nrOfPlayers === 55) {
+    } else if (nrOfPlayers === 20 || nrOfPlayers === 50) {
       this._nrOfPlayers = nrOfPlayers
     } else if (!Number.isInteger(nrOfPlayers) || nrOfPlayers < 1 || nrOfPlayers > 7) {
       throw new TypeError('Invalid number of players')
@@ -86,7 +86,8 @@ export class Game {
     Deck.shuffle(this.deck)
 
     this.makePlayers()
-    this.playersTakeCard()
+    this.playersTakeOneCard()
+    this.playerTakeCards()
     return console.log('Running' + this.nrOfPlayers)
   }
 
@@ -102,9 +103,18 @@ export class Game {
   /**
    * Every player takes one card.
    */
-  playersTakeCard () {
+  playersTakeOneCard () {
     for (const player of this.players) {
       player.takeCard(this.deck, this.discardDeck)
+    }
+  }
+
+  /**
+   * Every player takes cards till reaches ur surpass its stop value.
+   */
+  playerTakeCards () {
+    for (const player of this.players) {
+      player.takeSeveralCards(this.deck, this.discardDeck)
     }
   }
 }
