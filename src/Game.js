@@ -81,32 +81,42 @@ export class Game {
   }
 
   /**
-   * Runs the game.
+   * Starts the game.
    *
-   * @returns {string} A string that represents the outcome of the game.
    */
   run () {
     Deck.shuffle(this.deck)
-
     this.makePlayers()
     this.playersTakeOneCard()
     this.playPlayers()
-    return console.log('Running' + this.nrOfPlayers)
   }
 
   playPlayers () {
     for (const player of this.players) {
       player.takeSeveralCards(this.deck, this.discardDeck)
+      console.log(player.toString())
+
       if (player.handValue > 21) {
-        console.log(player.toString() + 'Dealer   : -\nDealer  wins!\n')
-        DiscardPile.throwCards(this.discardDeck, player.hand)
+        console.log('Dealer   : -\nDealer  wins!\n')
       } else if (player.handValue === 21 || player.hand.length === 5) {
-        console.log(player.toString() + 'Dealer   : -\nPlayer  wins!\n')
-        DiscardPile.throwCards(this.discardDeck, player.hand)
+        console.log('Dealer   : -\nPlayer  wins!\n')
       } else {
-        console.log('not implemented\n')
-        DiscardPile.throwCards(this.discardDeck, player.hand)
+        this.dealer.takeSeveralCards(this.deck, this.discardDeck)
+        console.log(this.dealer.toString())
+
+        if (this.dealer.handValue > 21) {
+          console.log('Player  wins!\n')
+        } else if (this.dealer.handValue === 21 || this.dealer.hand.length === 5) {
+          console.log('Dealer  wins!\n')
+        } else if (this.dealer.handValue < player.handValue) {
+          console.log('Player  wins!\n')
+        } else {
+          console.log('Dealer  wins!\n')
+        }
+        DiscardPile.throwCards(this.discardDeck, this.dealer.hand)
+        this.dealer.resetHandValue()
       }
+      DiscardPile.throwCards(this.discardDeck, player.hand)
     }
   }
 

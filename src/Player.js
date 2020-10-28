@@ -96,11 +96,22 @@ export class Player {
   }
 
   /**
+   * Resets the hand value to 0.
+   */
+  resetHandValue () {
+    this._handValue = 0
+  }
+
+  /**
    * Returns a string representing the player's cards and hand value.
    *
    * @returns {string} A string representing the player's cards and hand value.
    */
   toString () {
-    return this.name + ': ' + this.hand.join(' ') + ' (' + this.handValue + ')\n'
+    if (this.handValue > 21) {
+      return this.name + ': ' + this.hand.join(' ') + ' (' + this.handValue + ') BUSTED!'
+    } else {
+      return this.name + ': ' + this.hand.join(' ') + ' (' + this.handValue + ')'
+    }
   }
 }
