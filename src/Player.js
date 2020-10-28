@@ -94,4 +94,13 @@ export class Player {
   sumCards () {
     this._handValue = this.hand.reduce((value, playingCard) => value + playingCard, 0)
   }
+
+  /**
+   * Returns a string representing the player's cards and hand value.
+   *
+   * @returns {string} A string representing the player's cards and hand value.
+   */
+  toString () {
+    return this.name + ': ' + this.hand.join(' ') + ' (' + this.handValue + ')\n'
+  }
 }

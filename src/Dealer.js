@@ -31,6 +31,6 @@ export class Dealer extends Player {
      *
      * @type {string}
      */
-    this.name = 'Dealer'
+    this.name = 'Dealer   '
   }
 }

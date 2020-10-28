@@ -98,11 +98,14 @@ export class Game {
     for (const player of this.players) {
       player.takeSeveralCards(this.deck, this.discardDeck)
       if (player.handValue > 21) {
-        console.log(player.name + ': ' + player.hand.join(' ') + ' (' + player.handValue + ')' + '\nDealer   : -\nDealer  wins!\n')
+        console.log(player.toString() + 'Dealer   : -\nDealer  wins!\n')
+        DiscardPile.throwCards(this.discardDeck, player.hand)
       } else if (player.handValue === 21 || player.hand.length === 5) {
-        console.log(player.name + ': ' + player.hand.join(' ') + ' (' + player.handValue + ')' + '\nDealer   : -\nPlayer  wins!\n')
+        console.log(player.toString() + 'Dealer   : -\nPlayer  wins!\n')
+        DiscardPile.throwCards(this.discardDeck, player.hand)
       } else {
         console.log('not implemented\n')
+        DiscardPile.throwCards(this.discardDeck, player.hand)
       }
     }
   }
