@@ -9,6 +9,7 @@ import { Deck } from './Deck.js'
 import { DiscardPile } from './DiscardPile.js'
 import { Player } from './Player.js'
 import { PlayingCard } from './PlayingCard.js'
+import { Dealer } from './Dealer.js'
 
 /**
  * Represents the card game 21.
@@ -49,6 +50,8 @@ export class Game {
      * @type {Player[]} An array of Player objects.
      */
     this.players = []
+
+    this.dealer = new Dealer()
   }
 
   /**
@@ -95,9 +98,9 @@ export class Game {
     for (const player of this.players) {
       player.takeSeveralCards(this.deck, this.discardDeck)
       if (player.handValue > 21) {
-        console.log(player.playerName + ': ' + player.hand.join(' ') + ' (' + player.handValue + ')' + '\nDealer   : -\nDealer  wins!\n')
+        console.log(player.name + ': ' + player.hand.join(' ') + ' (' + player.handValue + ')' + '\nDealer   : -\nDealer  wins!\n')
       } else if (player.handValue === 21 || player.hand.length === 5) {
-        console.log(player.playerName + ': ' + player.hand.join(' ') + ' (' + player.handValue + ')' + '\nDealer   : -\nPlayer  wins!\n')
+        console.log(player.name + ': ' + player.hand.join(' ') + ' (' + player.handValue + ')' + '\nDealer   : -\nPlayer  wins!\n')
       } else {
         console.log('not implemented\n')
       }

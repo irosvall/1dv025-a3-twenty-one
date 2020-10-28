@@ -25,7 +25,7 @@ export class Player {
      *
      * @type {string}
      */
-    this.playerName = `Player #${playerIndex}`
+    this.name = `Player #${playerIndex}`
 
     /**
      * A player's randomized stop value from 16 to 18.
