@@ -77,13 +77,13 @@ export class Player {
   }
 
   /**
-   * If the hand value is above 0 take cards till reach the stop value.
+   * If the hand value is above 0 take cards till reach the stop value or 5 cards.
    *
    * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
    */
   takeSeveralCards (deck, discardDeck) {
-    while (this._handValue < this.stopValue) {
+    while (this._handValue < this.stopValue && this.hand.length < 5) {
       this.takeCard(deck, discardDeck)
     }
   }

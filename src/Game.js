@@ -87,8 +87,21 @@ export class Game {
 
     this.makePlayers()
     this.playersTakeOneCard()
-    this.playerTakeCards()
+    this.playPlayers()
     return console.log('Running' + this.nrOfPlayers)
+  }
+
+  playPlayers () {
+    for (const player of this.players) {
+      player.takeSeveralCards(this.deck, this.discardDeck)
+      if (player.handValue > 21) {
+        console.log(player.playerName + ': ' + player.hand.join(' ') + ' (' + player.handValue + ')' + '\nDealer   : -\nDealer  wins!\n')
+      } else if (player.handValue === 21 || player.hand.length === 5) {
+        console.log(player.playerName + ': ' + player.hand.join(' ') + ' (' + player.handValue + ')' + '\nDealer   : -\nPlayer  wins!\n')
+      } else {
+        console.log('not implemented\n')
+      }
+    }
   }
 
   /**
