@@ -7,6 +7,8 @@
  * @version 1.0.0
  */
 
+import { ErrorDrawpile } from './ErrorDrawpile.js'
+import { ErrorPlayers } from './ErrorPlayers.js'
 import { Game } from './Game.js'
 
 try {
@@ -14,4 +16,12 @@ try {
   game.run()
 } catch (e) {
   console.error(e.message)
+  process.exitCode = 1
+
+  if (e instanceof ErrorPlayers) {
+    process.exitCode = 26
+  }
+  if (e instanceof ErrorDrawpile) {
+    process.exitCode = 27
+  }
 }

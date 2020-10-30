@@ -7,6 +7,7 @@
 
 import { PlayingCard } from './PlayingCard.js'
 import { DiscardPile } from './DiscardPile.js'
+import { ErrorDrawpile } from './ErrorDrawpile.js'
 
 /**
  * Represents a player.
@@ -63,10 +64,11 @@ export class Player {
    *
    * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
+   * @throws {ErrorDrawpile} The deck must contain 1 or more cards.
    */
   takeCard (deck, discardDeck) {
     if (deck.length === 0) {
-      throw new TypeError('No more cards in the draw pile')
+      throw new ErrorDrawpile('No more cards in the draw pile')
     }
     if (deck.length === 1) {
       DiscardPile.refillDeck(deck, discardDeck)

@@ -10,6 +10,7 @@ import { DiscardPile } from './DiscardPile.js'
 import { Player } from './Player.js'
 import { PlayingCard } from './PlayingCard.js'
 import { Dealer } from './Dealer.js'
+import { ErrorPlayers } from './ErrorPlayers.js'
 
 /**
  * Represents the card game 21.
@@ -67,13 +68,14 @@ export class Game {
    * Set the number of players.
    *
    * @param {string} nrOfPlayers - The string representive of numbers of players in the game.
+   * @throws {ErrorPlayers} The number must be an integer and between 1-7.
    */
   set nrOfPlayers (nrOfPlayers) {
     const value = Number(nrOfPlayers)
     if (value === 20 || value === 50) {
       this._nrOfPlayers = value
     } else if (!Number.isInteger(value) || value < 1 || value > 7) {
-      throw new TypeError('Invalid number of players')
+      throw new ErrorPlayers('Invalid number of players')
     } else {
       this._nrOfPlayers = value
     }
