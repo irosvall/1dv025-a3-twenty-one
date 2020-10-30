@@ -92,7 +92,19 @@ export class Player {
    * Sums the player's playingcards values.
    */
   sumCards () {
-    this._handValue = this.hand.reduce((value, playingCard) => value + playingCard, 0)
+    const noAceArray = this.hand.filter(playingCard => playingCard.valueOf() !== 1)
+
+    this._handValue = noAceArray.reduce((value, playingCard) => value + playingCard, 0)
+
+    if (noAceArray.length !== this.hand.length) {
+      const aces = this.hand.filter(playingCard => playingCard.valueOf() === 1)
+
+      if (this._handValue + 14 + aces.length - 1 <= 21) {
+        this._handValue += 14 + aces.length - 1
+      } else {
+        this._handValue += aces.length
+      }
+    }
   }
 
   /**
