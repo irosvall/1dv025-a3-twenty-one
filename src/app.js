@@ -10,10 +10,8 @@
 import { Game } from './Game.js'
 
 try {
-  const numberOfPlayers = Number(process.argv.splice(2))
-  const game = new Game(numberOfPlayers)
-
-  game.run(numberOfPlayers)
+  const game = new Game(process.argv[2])
+  game.run()
 } catch (e) {
   console.error(e.message)
 }

@@ -20,7 +20,7 @@ export class Game {
   /**
    * Creates an instance of a Game.
    *
-   * @param {number} nrOfPlayers - The number of players in the game.
+   * @param {string} nrOfPlayers - The string representive of numbers of players in the game.
    */
   constructor (nrOfPlayers = 3) {
     /**
@@ -66,17 +66,16 @@ export class Game {
   /**
    * Set the number of players.
    *
-   * @param {number} nrOfPlayers - The number of players.
+   * @param {string} nrOfPlayers - The string representive of numbers of players in the game.
    */
   set nrOfPlayers (nrOfPlayers) {
-    if (nrOfPlayers === 0) {
-      this._nrOfPlayers = 3
-    } else if (nrOfPlayers === 20 || nrOfPlayers === 50) {
-      this._nrOfPlayers = nrOfPlayers
-    } else if (!Number.isInteger(nrOfPlayers) || nrOfPlayers < 1 || nrOfPlayers > 7) {
+    const value = Number(nrOfPlayers)
+    if (value === 20 || value === 50) {
+      this._nrOfPlayers = value
+    } else if (!Number.isInteger(value) || value < 1 || value > 7) {
       throw new TypeError('Invalid number of players')
     } else {
-      this._nrOfPlayers = nrOfPlayers
+      this._nrOfPlayers = value
     }
   }
 
