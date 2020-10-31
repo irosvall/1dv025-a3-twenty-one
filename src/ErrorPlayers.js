@@ -13,7 +13,7 @@
  */
 export class ErrorPlayers extends Error {
   /**
-   * Creates an instance of an invalid number of players error.
+   * Creates an instance of an error case when the number of players is invalid.
    *
    * @param {string} message - The error message.
    */

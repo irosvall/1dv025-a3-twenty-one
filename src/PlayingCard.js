@@ -21,7 +21,6 @@ export class PlayingCard {
    *
    * @param {Ranks} rank - The playing card's rank.
    * @param {Suits} suit - The playing card's suit.
-   * @class
    */
   constructor (rank, suit) {
     /**

@@ -13,7 +13,7 @@
  */
 export class ErrorDrawpile extends Error {
   /**
-   * Creates an instance of an error when the draw pile gets empty of cards.
+   * Creates an instance of an error case when the draw pile gets empty of cards.
    *
    * @param {string} message - The error message.
    */

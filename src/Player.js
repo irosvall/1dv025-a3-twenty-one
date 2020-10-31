@@ -79,10 +79,11 @@ export class Player {
   }
 
   /**
-   * If the hand value is above 0 take cards till reach the stop value or 5 cards.
+   * Take cards till reaches the stop value or 5 cards.
    *
    * @param {PlayingCard[]} deck - An array of playingcard objects representing the draw pile.
    * @param {PlayingCard[]} discardDeck - An array of playingcard objects representing a discard deck.
+   * @throws {ErrorDrawpile} The deck must contain 1 or more cards.
    */
   takeSeveralCards (deck, discardDeck) {
     while (this._handValue < this.stopValue && this.hand.length < 5) {
@@ -91,16 +92,20 @@ export class Player {
   }
 
   /**
-   * Sums the player's playingcards values.
+   * Sums the player's playing card's values.
    */
   sumCards () {
+    // Creates new array of playing cards without aces.
     const noAceArray = this.hand.filter(playingCard => playingCard.valueOf() !== 1)
 
+    // The hand value becomes the sum of the playing cards without aces.
     this._handValue = noAceArray.reduce((value, playingCard) => value + playingCard, 0)
 
+    // If the hand includes aces then an array with only the aces gets created.
     if (noAceArray.length !== this.hand.length) {
       const aces = this.hand.filter(playingCard => playingCard.valueOf() === 1)
 
+      // Depending on what is benefitial for the hand value the aces value's are either all 1 or one has value 14.
       if (this._handValue + 14 + aces.length - 1 <= 21) {
         this._handValue += 14 + aces.length - 1
       } else {
@@ -122,10 +127,12 @@ export class Player {
    * @returns {string} A string representing the player's cards and hand value.
    */
   toString () {
+    const summary = `${this.name}\t: ${this.hand.join(' ')} (${this.handValue})`
+
     if (this.handValue > 21) {
-      return this.name + ': ' + this.hand.join(' ') + ' (' + this.handValue + ') BUSTED!'
+      return summary + ' BUSTED!'
     } else {
-      return this.name + ': ' + this.hand.join(' ') + ' (' + this.handValue + ')'
+      return summary
     }
   }
 }

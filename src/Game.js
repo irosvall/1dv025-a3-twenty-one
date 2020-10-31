@@ -11,6 +11,7 @@ import { Player } from './Player.js'
 import { PlayingCard } from './PlayingCard.js'
 import { Dealer } from './Dealer.js'
 import { ErrorPlayers } from './ErrorPlayers.js'
+import { ErrorDrawpile } from './ErrorDrawpile.js'
 
 /**
  * Represents the card game 21.
@@ -22,6 +23,7 @@ export class Game {
    * Creates an instance of a Game.
    *
    * @param {string} nrOfPlayers - The string representive of numbers of players in the game.
+   * @throws {ErrorPlayers} The number of players must be an integer and between 1-7.
    */
   constructor (nrOfPlayers = 3) {
     /**
@@ -68,7 +70,8 @@ export class Game {
    * Set the number of players.
    *
    * @param {string} nrOfPlayers - The string representive of numbers of players in the game.
-   * @throws {ErrorPlayers} The number must be an integer and between 1-7.
+   *
+   * @throws {ErrorPlayers} The number of players must be an integer and between 1-7.
    */
   set nrOfPlayers (nrOfPlayers) {
     const value = Number(nrOfPlayers)
@@ -84,6 +87,7 @@ export class Game {
   /**
    * Starts the game.
    *
+   * @throws {ErrorDrawpile} The deck must contain 1 or more cards.
    */
   run () {
     Deck.shuffle(this.deck)
@@ -93,8 +97,10 @@ export class Game {
   }
 
   /**
-   * Play each player against the dealer.
+   * Play each player against the dealer if needed, and summorizes the outcomes.
+   * Follows the set of rules for the card game 21.
    *
+   * @throws {ErrorDrawpile} The deck must contain 1 or more cards.
    */
   playPlayers () {
     for (const player of this.players) {
@@ -102,9 +108,9 @@ export class Game {
       console.log(player.toString())
 
       if (player.handValue > 21) {
-        console.log('Dealer   : -\nDealer  wins!\n')
+        console.log(`${this.dealer.name}\t: -\nDealer wins!\n`)
       } else if (player.handValue === 21 || player.hand.length === 5) {
-        console.log('Dealer   : -\nPlayer  wins!\n')
+        console.log(`${this.dealer.name}\t: -\nPlayer wins!\n`)
       } else {
         this.dealer.takeSeveralCards(this.deck, this.discardDeck)
         console.log(this.dealer.toString())
@@ -136,6 +142,8 @@ export class Game {
 
   /**
    * Every player takes one card.
+   *
+   * @throws {ErrorDrawpile} The deck must contain 1 or more cards.
    */
   playersTakeOneCard () {
     for (const player of this.players) {
