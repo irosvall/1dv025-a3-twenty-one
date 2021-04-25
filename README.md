@@ -1,5 +1,9 @@
 # Examinationsuppgift A3 - Tjugoett
 
+This application was a project I made as a part of my studies at Linnaeus University, completed 2020-11-03.
+
+## The assignment description
+
 ## Introduktion
 
 I denna examinationsuppgift ska du simulera kortspelet Tjugoett ___enligt givna regler___.
